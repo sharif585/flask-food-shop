@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set title = "Receipt - Food Shop" %}
+
+{% block content %}
+  <div class="card pad">
+    <h1>✅ Order Confirmed</h1>
+    <p class="muted">Thank you! Your order has been placed successfully.</p>
+
+    <div class="receipt">
+      <div><b>Order ID:</b> {{ r.order_id }}</div>
+      <div><b>Time:</b> {{ r.order_time }}</div>
+      <div><b>Name:</b> {{ r.name }}</div>
+      <div><b>Student ID:</b> {{ r.student_id }}</div>
+      <div><b>Payment:</b> {{ r.payment }}</div>
+      <div><b>Address:</b> {{ r.address }}</div>
+    </div>
+
+    <h2>Items</h2>
+    <ul class="list">
+      {% for x in r.items %}
+        <li>
+          <span>{{ x.name }} × {{ x.qty }}</span>
+          <b>¥ {{ x.line_total }}</b>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="summary">
+      <div>Subtotal</div><div class="right">¥ {{ r.subtotal }}</div>
+      <div>Delivery Fee</div><div class="right">¥ {{ r.delivery_fee }}</div>
+      <div class="total">Grand Total</div><div class="right total">¥ {{ r.total }}</div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="{{ url_for('index') }}">Back to Menu</a>
+    </div>
+  </div>
+{% endblock %}

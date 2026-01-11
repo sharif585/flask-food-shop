@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% set title = "Cart - Food Shop" %}
+
+{% block content %}
+  <h1>Your Cart</h1>
+
+  {% if items|length == 0 %}
+    <div class="empty">
+      <p>Your cart is empty.</p>
+      <a class="btn" href="{{ url_for('index') }}">Back to Menu</a>
+    </div>
+  {% else %}
+    <form method="post" action="{{ url_for('update_cart') }}" class="card pad">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="right">Price</th>
+            <th class="center">Qty</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in items %}
+            <tr>
+              <td>{{ x.name }}</td>
+              <td class="right">¥ {{ x.price }}</td>
+              <td class="center">
+                <input class="qty" type="number" min="0" name="qty_{{ x.id }}" value="{{ x.qty }}">
+              </td>
+              <td class="right">¥ {{ x.line_total }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="summary">
+        <div>Subtotal</div><div class="right">¥ {{ subtotal }}</div>
+        <div>Delivery Fee</div><div class="right">¥ {{ delivery_fee }}</div>
+        <div class="total">Grand Total</div><div class="right total">¥ {{ total }}</div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit">Update Cart</button>
+        <a class="btn-outline" href="{{ url_for('checkout') }}">Checkout →</a>
+      </div>
+    </form>
+
+    <form method="post" action="{{ url_for('clear_cart') }}" class="actions">
+      <button class="btn-danger" type="submit">Clear Cart</button>
+    </form>
+  {% endif %}
+{% endblock %}

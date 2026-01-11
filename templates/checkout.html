@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% set title = "Checkout - Food Shop" %}
+
+{% block content %}
+  <h1>Checkout</h1>
+
+  <div class="grid-2">
+    <div class="card pad">
+      <h2>Customer Info</h2>
+
+      <form method="post" action="{{ url_for('checkout') }}" class="form">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Hasan Sharif" required>
+        </label>
+
+        <label>
+          Student ID
+          <input type="text" name="student_id" placeholder="M25W0587" required>
+        </label>
+
+        <label>
+          Address
+          <textarea name="address" rows="4" placeholder="Kyoto, Japan..." required></textarea>
+        </label>
+
+        <label>
+          Payment Method
+          <select name="payment">
+            <option>Cash</option>
+            <option>Card</option>
+            <option>PayPay</option>
+          </select>
+        </label>
+
+        <button class="btn" type="submit">Place Order</button>
+      </form>
+    </div>
+
+    <div class="card pad">
+      <h2>Order Summary</h2>
+
+      <ul class="list">
+        {% for x in items %}
+          <li>
+            <span>{{ x.name }} × {{ x.qty }}</span>
+            <b>¥ {{ x.line_total }}</b>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="summary">
+        <div>Subtotal</div><div class="right">¥ {{ subtotal }}</div>
+        <div>Delivery Fee</div><div class="right">¥ {{ delivery_fee }}</div>
+        <div class="total">Grand Total</div><div class="right total">¥ {{ total }}</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn-outline" href="{{ url_for('cart') }}">← Back to Cart</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,167 @@
+:root {
+  --bg: #0b1220;
+  --card: #0f1a33;
+  --text: #e8eeff;
+  --muted: #b7c2e6;
+  --border: #223257;
+  --btn: #5b8cff;
+  --danger: #ff5b70;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 30% 10%, #13224a, var(--bg));
+  color: var(--text);
+}
+
+.container { max-width: 980px; margin: 0 auto; padding: 18px; }
+
+.topbar {
+  position: sticky; top: 0;
+  background: rgba(10, 16, 30, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+.brand { display: flex; flex-direction: column; font-weight: 800; }
+.brand small { font-weight: 600; color: var(--muted); }
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 14px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+.nav a:hover { border-color: var(--border); }
+
+.hero {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+}
+.hero p { color: var(--muted); margin-top: 6px; }
+.badge {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 26, 51, 0.6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 860px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(15, 26, 51, 0.65);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.pad { padding: 16px; }
+
+.card-title { font-size: 18px; font-weight: 800; }
+.price { margin: 10px 0 12px; color: var(--muted); font-weight: 700; }
+
+.row { display: flex; gap: 10px; align-items: center; }
+.qty {
+  width: 70px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0a1430;
+  color: var(--text);
+}
+
+.btn, .btn-outline, .btn-danger {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 800;
+}
+.btn { background: var(--btn); color: #061022; }
+.btn:hover { filter: brightness(1.06); }
+
+.btn-outline {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.06); }
+
+.btn-danger { background: var(--danger); color: #23030a; }
+.btn-danger:hover { filter: brightness(1.06); }
+
+.actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 12px 8px; border-bottom: 1px solid var(--border); }
+.right { text-align: right; }
+.center { text-align: center; }
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.total { font-weight: 900; }
+.list { list-style: none; padding: 0; margin: 0; }
+.list li {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+}
+.muted { color: var(--muted); }
+
+.form label { display: block; margin-bottom: 12px; }
+.form input, .form textarea, .form select {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0a1430;
+  color: var(--text);
+  margin-top: 6px;
+}
+
+.flash-wrap { margin: 10px 0 14px; display: grid; gap: 8px; }
+.flash {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(15,26,51,0.85);
+}
+.flash-success { border-color: rgba(91,140,255,0.55); }
+.flash-error { border-color: rgba(255,91,112,0.55); }
+
+.empty { padding: 14px; border: 1px solid var(--border); border-radius: 16px; }
+.receipt { display: grid; gap: 6px; margin: 10px 0 16px; }
+
+.footer {
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(10, 16, 30, 0.5);
+}
+.footer .container { padding: 16px 18px; }
