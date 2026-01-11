@@ -7,12 +7,12 @@ app.secret_key = "change-this-secret-key"  # needed for session
 
 # Simple in-memory menu (no database needed)
 MENU = [
-    {"id": "burger", "name": "Chicken Burger", "price": 450},
-    {"id": "pizza", "name": "Cheese Pizza", "price": 900},
-    {"id": "fried_rice", "name": "Fried Rice", "price": 700},
-    {"id": "noodles", "name": "Spicy Noodles", "price": 650},
-    {"id": "coffee", "name": "Iced Coffee", "price": 350},
-    {"id": "juice", "name": "Orange Juice", "price": 300},
+    {"id": "burger", "name": "Chicken Burger", "price": 450, "image": "burger.jpg"},
+    {"id": "pizza", "name": "Cheese Pizza", "price": 900, "image": "pizza.jpg"},
+    {"id": "fried_rice", "name": "Fried Rice", "price": 700, "image": "rice.jpg"},
+    {"id": "noodles", "name": "Spicy Noodles", "price": 650, "image": "noodles.jpg"},
+    {"id": "coffee", "name": "Iced Coffee", "price": 350, "image": "coffee.jpg"},
+    {"id": "juice", "name": "Orange Juice", "price": 300, "image": "juice.jpg"},
 ]
 
 def get_menu_item(item_id: str):

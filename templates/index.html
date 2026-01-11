@@ -14,16 +14,24 @@
 
   <div class="grid">
     {% for item in menu %}
-      <div class="card">
-        <div class="card-title">{{ item.name }}</div>
-        <div class="price">¥ {{ item.price }}</div>
 
-        <form method="post" action="{{ url_for('add_to_cart') }}" class="row">
-          <input type="hidden" name="item_id" value="{{ item.id }}">
-          <input type="number" name="qty" value="1" min="1" class="qty">
-          <button class="btn" type="submit">Add to Cart</button>
-        </form>
-      </div>
+     <div class="card">
+    <img
+    src="{{ url_for('static', filename='images/' + item.image) }}"
+    alt="{{ item.name }}"
+    class="food-img"
+  >
+
+  <div class="card-title">{{ item.name }}</div>
+  <div class="price">¥ {{ item.price }}</div>
+
+  <form method="post" action="{{ url_for('add_to_cart') }}" class="row">
+    <input type="hidden" name="item_id" value="{{ item.id }}">
+    <input type="number" name="qty" value="1" min="1" class="qty">
+    <button class="btn" type="submit">Add to Cart</button>
+  </form>
+</div>
+
     {% endfor %}
   </div>
 
